@@ -22,7 +22,9 @@ public class BubbleSort {
 				if (input.getIndex(i) > input.getIndex(i+1)) {
 					input.swap(i, i+1);
 					sorted = false;
+					System.out.println(sorted);
 				}
+				System.out.println(sorted);
 			}
 			if (sorted) {
 				break;

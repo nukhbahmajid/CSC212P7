@@ -46,6 +46,7 @@ public class TestSorting {
 		System.out.println(sortMe.toJava());
 		BubbleSort.bubbleSort(sortMe);
 		Assert.assertTrue(checkSorted(sortMe));
+		//System.out.println(sortMe.toJava());
 	}
 	
 	@Test
@@ -54,6 +55,14 @@ public class TestSorting {
 		ListADT<Integer> sortMe = new JavaList<>(Arrays.asList(35, 88, 11, 47, 14, 24, 41, 62, 27));
 		
 		BubbleSort.bubbleSort(sortMe);
+		Assert.assertTrue(checkSorted(sortMe));
+	}
+	
+	@Test
+	public void testInsertionSort(){
+		ListADT<Integer> sortMe = new JavaList<>(Arrays.asList(35, 88, 11, 47, 14, 24, 41, 62, 27));
+		
+		InsertionSort.insertionSort(sortMe);
 		Assert.assertTrue(checkSorted(sortMe));
 	}
 
