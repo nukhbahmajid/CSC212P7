@@ -43,7 +43,7 @@ public class TestSorting {
 		Random rand = new Random(13);
 		// For good measure, let's shuffle it and sort it again to see if that works, too.
 		sortMe.shuffle(rand);
-		System.out.println(sortMe.toJava());
+		//System.out.println(sortMe.toJava());
 		BubbleSort.bubbleSort(sortMe);
 		Assert.assertTrue(checkSorted(sortMe));
 		//System.out.println(sortMe.toJava());
@@ -64,6 +64,33 @@ public class TestSorting {
 		
 		InsertionSort.insertionSort(sortMe);
 		Assert.assertTrue(checkSorted(sortMe));
+		Assert.assertEquals(9, sortMe.toJava().size());
+	}
+	/**
+	 * First test for selection sort where in the same list we are sorting
+	 */
+	@Test 
+	public void testSelectionSort() {
+        ListADT<Integer> sortMe = new JavaList<>(Arrays.asList(35, 88, 11, 47, 14, 24, 41, 62, 27));
+		
+		SelectionSort.selectionSort(sortMe);
+		//System.out.println(sortMe.toJava());
+		Assert.assertTrue(checkSorted(sortMe));
+		System.out.println(sortMe.toJava());
+	}
+	
+	/**
+	 * First test for Selection Sort where we have to have two different
+	 * lists, one sorted and another unsorted.  
+	 */
+	@Test
+	public void testSelectionSortList() {
+		ListADT<Integer> sortMe = new JavaList<>(Arrays.asList(1, 3, 2, 0));
+		ListADT<Integer> sorted = SelectionSort.selectionSortList(sortMe);
+		Assert.assertTrue(checkSorted(sortMe));
+		Assert.assertEquals(4, sorted.size());
+		
+		System.out.println("The returned list is: " + sorted);
 	}
 
 

@@ -4,7 +4,9 @@ import edu.smith.cs.csc212.adtr.ListADT;
 
 
 public class InsertionSort {
-	
+	/*
+	 * This is a linear search sort - maybe?
+	 */
 	public static void insertionSort(ListADT<Integer> input) {
 		int sizeList = input.size();
 		
@@ -36,5 +38,6 @@ public class InsertionSort {
 		}//endForLoop
 		
 	}//endMethod
+	
 
 }//endClass
