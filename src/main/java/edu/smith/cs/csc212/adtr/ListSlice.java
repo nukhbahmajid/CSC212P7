@@ -14,7 +14,7 @@ public class ListSlice<T> extends ListADT<T> {
 	}
 	
 	@Override
-	protected boolean isEmpty() {
+	public boolean isEmpty() {
 		return begin == end;
 	}
 

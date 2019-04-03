@@ -92,6 +92,49 @@ public class TestSorting {
 		
 		System.out.println("The returned list is: " + sorted);
 	}
+	
+	/**
+	 * Testing if my helper method to combine two sorted lists works
+	 */
+	@Test
+	public void testMergingTwoSortedLists() {
+		ListADT<Integer> list1 = new JavaList<>(Arrays.asList(11, 14, 27, 47));
+		ListADT<Integer> list2 = new JavaList<>(Arrays.asList(24, 35, 41, 62, 88));
+		
+		ListADT<Integer> mergedList = MergeSort.mergeTwoSortedLists(list1, list2);
+		
+		System.out.println("The merged list: " + mergedList);
+		
+		Assert.assertTrue(checkSorted(mergedList));
+	}
+	
+	/**
+	 * Testing if my helper method to combine two sorted lists works
+	 */
+	@Test
+	public void testMergingTwoSortedLists2() {
+		ListADT<Integer> list1 = new JavaList<>(Arrays.asList(100,200,303,456));
+		ListADT<Integer> list2 = new JavaList<>(Arrays.asList(162,354, 441,567,588));
+		
+		ListADT<Integer> mergedList = MergeSort.mergeTwoSortedLists(list1, list2);
+		
+		System.out.println("The merged list: " + mergedList);
+		
+		Assert.assertTrue(checkSorted(mergedList));
+	}
+	
+	/**
+	 * Testing the recursive merge sort method
+	 */
+	@Test
+	public void testMergeSortRecursive() {
+		ListADT<Integer> sortMe1 = new JavaList<>(Arrays.asList(35, 88, 11, 47, 14, 24, 41, 62, 27,100,99));
+		
+		MergeSort.mergeSortRecursive(sortMe1);
+		System.out.println("rMerge: " + sortMe1);
+		Assert.assertTrue(checkSorted(sortMe1));
+		System.out.println("rMerge: " + sortMe1);
+	}
 
 
 }
