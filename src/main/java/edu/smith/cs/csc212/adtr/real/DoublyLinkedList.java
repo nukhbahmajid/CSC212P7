@@ -20,12 +20,27 @@ public class DoublyLinkedList<T> extends ListADT<T> {
 	}
 	
 
+	/**
+	 * I have a bug in my removeFront!! It should be a lot similar to the
+	 * removeBack method. 
+	 * 
+	 * For the iterative merge sort have a DLL of GrowableLists. This is because 
+	 * remove from the front and adding to the back (you'll add in terms of pairs of lists)
+	 * of a DLL is easy and of O(1) complexity. 
+	 */
 	@Override
 	public T removeFront() {
 		checkNotEmpty();
-		Node<T> originalStart = this.start;
-		this.start = this.start.after;
-		return originalStart.value;
+		if (this.size() == 1) {
+			Node<T> originalStart = this.start;
+			this.end = this.start = null;
+			return originalStart.value;
+		} else {
+			Node<T> originalStart = this.start;
+			this.start = this.start.after;
+			this.start.before = null;
+			return originalStart.value;
+		}
 		
  	}
 

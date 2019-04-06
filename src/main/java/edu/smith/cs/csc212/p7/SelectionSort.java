@@ -48,8 +48,6 @@ public class SelectionSort {
 			minIndex = input.size() - 1;
 		}
 		
-		System.out.println("Sorted list: " + sorted);
-		
 		input = sorted;
 		
 		
@@ -57,7 +55,7 @@ public class SelectionSort {
 		 * Since lists are mutable objects, checking if the input equals to sorted assigngment
 		 * is going to point at the same place in memory later (i.e. now point at a sorted list)
 		 */
-		System.out.println("Original list: " + input);
+//		System.out.println("Original list: " + input);
 		
 		return input;
 	}

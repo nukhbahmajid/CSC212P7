@@ -61,10 +61,11 @@ public class TestSorting {
 	@Test
 	public void testInsertionSort(){
 		ListADT<Integer> sortMe = new JavaList<>(Arrays.asList(35, 88, 11, 47, 14, 24, 41, 62, 27));
-		
+		System.out.println("Pre-Insertion Sort: " + sortMe.toJava());
 		InsertionSort.insertionSort(sortMe);
 		Assert.assertTrue(checkSorted(sortMe));
 		Assert.assertEquals(9, sortMe.toJava().size());
+		System.out.println("Post-Insertion Sort: " + sortMe.toJava());
 	}
 	/**
 	 * First test for selection sort where in the same list we are sorting
@@ -72,11 +73,12 @@ public class TestSorting {
 	@Test 
 	public void testSelectionSort() {
         ListADT<Integer> sortMe = new JavaList<>(Arrays.asList(35, 88, 11, 47, 14, 24, 41, 62, 27));
-		
+        System.out.println("Pre-Selection Sort: " + sortMe.toJava());
 		SelectionSort.selectionSort(sortMe);
-		//System.out.println(sortMe.toJava());
+		Assert.assertEquals(9, sortMe.toJava().size());
 		Assert.assertTrue(checkSorted(sortMe));
-		System.out.println(sortMe.toJava());
+		System.out.println("Post-Selection Sort: " + sortMe.toJava());
+		
 	}
 	
 	/**
@@ -86,11 +88,11 @@ public class TestSorting {
 	@Test
 	public void testSelectionSortList() {
 		ListADT<Integer> sortMe = new JavaList<>(Arrays.asList(1, 3, 2, 0));
-		ListADT<Integer> sorted = SelectionSort.selectionSortList(sortMe);
+		System.out.println("Pre-Selection Sort List: " + sortMe.toJava());
+		sortMe = SelectionSort.selectionSortList(sortMe);
 		Assert.assertTrue(checkSorted(sortMe));
-		Assert.assertEquals(4, sorted.size());
-		
-		System.out.println("The returned list is: " + sorted);
+		Assert.assertEquals(4, sortMe.size());
+		System.out.println("Post-Selection Sort List: " + sortMe.toJava());
 	}
 	
 	/**
@@ -101,26 +103,34 @@ public class TestSorting {
 		ListADT<Integer> list1 = new JavaList<>(Arrays.asList(11, 14, 27, 47));
 		ListADT<Integer> list2 = new JavaList<>(Arrays.asList(24, 35, 41, 62, 88));
 		
+		System.out.println("Sorted List 1: " + list1.toJava());
+		System.out.println("Sorted List 2: " + list2.toJava());
+		
 		ListADT<Integer> mergedList = MergeSort.mergeTwoSortedLists(list1, list2);
 		
-		System.out.println("The merged list: " + mergedList);
+		System.out.println("Merging two sorted lists test: " + mergedList);
 		
 		Assert.assertTrue(checkSorted(mergedList));
+		Assert.assertEquals(9, mergedList.size());
 	}
 	
 	/**
-	 * Testing if my helper method to combine two sorted lists works
+	 * Testing if my helper method to combine two sorted lists works pt.2
 	 */
 	@Test
 	public void testMergingTwoSortedLists2() {
 		ListADT<Integer> list1 = new JavaList<>(Arrays.asList(100,200,303,456));
 		ListADT<Integer> list2 = new JavaList<>(Arrays.asList(162,354, 441,567,588));
 		
+		System.out.println("Sorted List 1: " + list1.toJava());
+		System.out.println("Sorted List 2: " + list2.toJava());
+		
 		ListADT<Integer> mergedList = MergeSort.mergeTwoSortedLists(list1, list2);
 		
-		System.out.println("The merged list: " + mergedList);
+		System.out.println("Merging two sorted lists test pt. 2: " + mergedList);
 		
 		Assert.assertTrue(checkSorted(mergedList));
+		Assert.assertEquals(9, mergedList.size());
 	}
 	
 	/**
@@ -129,11 +139,53 @@ public class TestSorting {
 	@Test
 	public void testMergeSortRecursive() {
 		ListADT<Integer> sortMe1 = new JavaList<>(Arrays.asList(35, 88, 11, 47, 14, 24, 41, 62, 27,100,99));
-		
-		MergeSort.mergeSortRecursive(sortMe1);
-		System.out.println("rMerge: " + sortMe1);
+		System.out.println("Pre-Recursive Merge Sort List: " + sortMe1.toJava());
+		sortMe1 = MergeSort.mergeSortRecursive(sortMe1);
+		System.out.println("Post-Recursive Merge Sort List: " + sortMe1.toJava());
 		Assert.assertTrue(checkSorted(sortMe1));
-		System.out.println("rMerge: " + sortMe1);
+		Assert.assertEquals(11, sortMe1.size());
+	}
+	
+	/*
+	 * Testing iterative Merge Sort with DLL pt. 1
+	 */
+	@Test
+	public void testIterativeMergeDLL() {
+		ListADT<Integer> sortMe = new JavaList<>(Arrays.asList(4,2,5,1,3,0));
+		System.out.println("Pre-Iterative Merge Sort with DLL: " + sortMe.toJava());
+		MergeSortDLL iterativeSortDLL = new MergeSortDLL();
+		ListADT<Integer> sortedList = iterativeSortDLL.mergeDLL(sortMe);	
+		System.out.println("Post-Iterative Merge Sort with DLL: " + sortedList.toJava());
+		Assert.assertTrue(checkSorted(sortedList));
+		Assert.assertEquals(sortMe.size(), sortedList.size());
+		
+	}
+	
+	/*
+	 * Testing iterative Merge Sort with DLL pt. 2
+	 */
+	@Test
+	public void testIterativeMergeDLLPt2() {
+		ListADT<Integer> sortMe = new JavaList<>(Arrays.asList(100, 567, 349, 593, 200, 100));
+		System.out.println("Pre-Iterative Merge Sort with DLL pt.2: " + sortMe.toJava());
+		MergeSortDLL iterativeSortDLL = new MergeSortDLL();
+		ListADT<Integer> sortedList = iterativeSortDLL.mergeDLL(sortMe);	
+		System.out.println("Post-Iterative Merge Sort with DLL pt.2: " + sortedList.toJava());
+		Assert.assertTrue(checkSorted(sortedList));
+		Assert.assertEquals(sortMe.size(), sortedList.size());
+	}
+	
+	/*
+	 * Testing iterative merge sort with a simple ListADT
+	 */
+	@Test
+	public void testIterativeMerge() {
+		ListADT<Integer> sortMe = new JavaList<>(Arrays.asList(4,2,5,1,3,0));
+		System.out.println("Pre-Iterative Merge Sort with ListADT: " + sortMe.toJava());
+		ListADT<Integer> sortedList = MergeSort.mergeSortIterative(sortMe);
+		System.out.println("Post-Iterative Merge Sort with ListADT: " + sortedList.toJava());
+		Assert.assertTrue(checkSorted(sortedList));
+		Assert.assertEquals(sortMe.size(), sortedList.size());
 	}
 
 
